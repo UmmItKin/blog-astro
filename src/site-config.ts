@@ -1,5 +1,5 @@
 export const siteConfig = {
-  author: 'Kieran Wang',
+  author: 'UmmIt Kin',
   title: 'Vitesse theme for Astro',
   subtitle: 'Vitesse theme for Astro, supports Vue and UnoCSS.',
   description: 'A Minimal, SEO-friendly portfolio and blog theme for Astro.',
@@ -46,6 +46,10 @@ export const siteConfig = {
       {
         text: 'Blog',
         href: '/blog',
+      },
+      {
+        text: 'CTF',
+        href: '/ctf',
       },
       {
         text: 'Talks',
