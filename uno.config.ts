@@ -57,5 +57,10 @@ export default defineConfig({
     'i-simple-icons-sinaweibo',
     'i-ri-github-line',
     'i-ri-twitter-x-line',
+    'i-simple-icons-archlinux',
+    'i-simple-icons-buymeacoffee',
+    'i-ri-rss-line',
+    'i-ri-book-2-line',
+    'i-ri-signal-tower-line',
   ],
 })

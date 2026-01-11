@@ -1,0 +1,71 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const links = [
+  {
+    text: 'AUR',
+    href: 'https://aur.archlinux.org/account/UmmItKin',
+    icon: 'i-simple-icons-archlinux',
+  },
+  {
+    text: 'GitHub',
+    href: 'https://github.com/UmmItKin',
+    icon: 'i-simple-icons-github',
+  },
+  {
+    text: 'Buy me a Coffee',
+    href: 'https://buymeacoffee.com/ummit',
+    icon: 'i-simple-icons-buymeacoffee',
+  },
+  {
+    text: 'Blog',
+    href: '/blog',
+    icon: 'i-ri-rss-line',
+  },
+  {
+    text: 'Passthru',
+    href: 'https://passthru.ummit.dev',
+    icon: 'i-ri-book-2-line',
+  },
+  {
+    text: 'Status',
+    href: 'https://status.ummit.dev',
+    icon: 'i-ri-signal-tower-line',
+  },
+]
+---
+
+<BaseLayout title="Links" description="All my links in one place.">
+  <div class="flex flex-col items-center justify-center min-h-70vh">
+    <!-- Avatar -->
+    <div class="mb-6">
+      <img src="/favicon.svg" alt="UmmIt Kin" class="w-24 h-24 rounded-full border-2 border-neutral-500/30" />
+    </div>
+
+    <!-- Name -->
+    <h1 class="text-2xl font-bold mb-2">UmmIt Kin</h1>
+    <p class="text-sm opacity-60 mb-8">HKer · InfoSec · GNU/Linux</p>
+
+    <!-- Links -->
+    <div class="flex flex-col gap-3 w-full max-w-sm px-4">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('/') ? '_self' : '_blank'}
+            rel={link.href.startsWith('/') ? '' : 'noopener noreferrer'}
+            class="flex items-center justify-center gap-3 py-3 px-6 rd-2 border border-neutral-300 dark:border-neutral-700 bg-neutral-100/50 dark:bg-neutral-800/50 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none"
+          >
+            <i class:list={[link.icon, 'text-lg']} />
+            <span>{link.text}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Footer -->
+    <p class="mt-12 text-xs opacity-40">
+      © {new Date().getFullYear()} UmmIt Kin
+    </p>
+  </div>
+</BaseLayout>

@@ -49,6 +49,10 @@ export const siteConfig = {
         text: 'Projects',
         href: '/projects',
       },
+      {
+        text: 'Links',
+        href: '/links',
+      },
     ],
   },
   page: {
