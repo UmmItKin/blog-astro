@@ -112,5 +112,6 @@ export default defineConfig({
     'i-ri-shield-check-line',
     'i-ri-terminal-box-line',
     'i-ri-mail-line',
+    'i-ri-external-link-line',
   ],
 })
