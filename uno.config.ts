@@ -62,5 +62,6 @@ export default defineConfig({
     'i-ri-rss-line',
     'i-ri-book-2-line',
     'i-ri-signal-tower-line',
+    'i-ri-global-line',
   ],
 })

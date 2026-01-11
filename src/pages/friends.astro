@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const friendsList = [
+  {
+    image: 'https://avatars.githubusercontent.com/u/101975746?v=4',
+    name: 'Lemon',
+    url: 'https://blog.alvin-tw.me/',
+    github: 'https://github.com/LemonTeatw1',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/107759974?v=4',
+    name: 'ChiLin.H',
+    url: 'https://neko70.net/',
+    github: 'https://github.com/qilin102223',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/135571477?v=4',
+    name: 'Frank',
+    url: 'http://frankk.uk/',
+    github: 'https://github.com/Frank-Kam',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/115418645?v=4',
+    name: 'Elliot',
+    url: 'https://elliot-tw.me/',
+    github: 'https://github.com/Elliot-32',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/132590659?v=4',
+    name: 'Yochan',
+    url: 'https://yochan06.github.io/',
+    github: 'https://github.com/yochan06',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/161041270?v=4',
+    name: 'Kohiro',
+    url: 'https://github.com/kohiro961021',
+    github: 'https://github.com/kohiro961021',
+  },
+  {
+    image: 'https://avatars.githubusercontent.com/u/150093538?v=4',
+    name: 'Robin',
+    url: 'https://robin-tw.me/',
+    github: 'https://github.com/cxk228922',
+  },
+]
+---
+
+<BaseLayout title="Friends" description="My friends and their awesome websites.">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold opacity-80">Friends</h1>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    {
+      friendsList.map((friend) => (
+        <div class="flex flex-col items-center">
+          <a href={friend.url} target="_blank" rel="noopener noreferrer" class="block">
+            <img
+              src={friend.image}
+              alt={`${friend.name}'s avatar`}
+              class="w-28 h-28 rd-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-200"
+            />
+          </a>
+          <span class="mt-4 text-base font-medium opacity-75">{friend.name}</span>
+          <div class="mt-2 flex gap-2">
+            <a
+              href={friend.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${friend.name}'s GitHub`}
+              class="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <i class="i-simple-icons-github text-sm" />
+            </a>
+            <a
+              href={friend.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${friend.name}'s Website`}
+              class="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <i class="i-ri-global-line text-sm" />
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

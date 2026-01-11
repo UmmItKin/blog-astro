@@ -51,6 +51,10 @@ export const siteConfig = {
         href: '/projects',
       },
       {
+        text: 'Friends',
+        href: '/friends',
+      },
+      {
         text: 'Links',
         href: '/links',
       },
