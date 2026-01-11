@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join, relative } from 'node:path'
 
-const ARTICLE_DIR = join(import.meta.dirname, '../src/content/Article')
+const ARTICLE_DIR = join(import.meta.dirname, '../Article')
 const BLOG_DIR = join(import.meta.dirname, '../src/content/blog')
 
 interface HugoFrontmatter {
