@@ -65,7 +65,7 @@ mount /dev/sda1 --mkdir /mnt/boot/efi
 Now, proceed with the essential package installations:
 
 ```shell
-pacstrap -i /mnt base base-devel linux linux-firmware linux-headers lvm2 neovim dhcpcd networkmanager pipewire
+pacstrap -i /mnt base base-devel linux linux-firmware linux-headers lvm2 vim neovim networkmanager pipewire
 ```
 
 Generate the `/etc/fstab` file:
@@ -132,9 +132,9 @@ Reboot your system. You'll notice that GRUB prompts you to enter the passphrase 
 
 >Note: The decryption process may take some time, and entering the wrong passphrase will lead to a GRUB rescue mode. you need to reboot and try again.
 
-## Conclusion
+### Reboot
 
-Congratulations! Your system is now fully encrypted with GRUB, providing enhanced security for your Arch Linux installation.
+You can now reboot you computer to see the result.
 
 ## References
 
