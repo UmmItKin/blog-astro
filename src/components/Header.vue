@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core'
-import { computed, onMounted, ref, unref } from 'vue'
+import { computed } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
@@ -24,40 +24,6 @@ const socialLinks = computed(() => {
 
 const { y: scroll } = useWindowScroll()
 
-const oldScroll = ref(unref(scroll))
-
-onMounted(() => {
-  const navMask = document.querySelector('.nav-drawer-mask') as HTMLElement
-
-  navMask?.addEventListener('touchmove', (event) => {
-    event.preventDefault()
-  })
-
-  const headerEl = document.querySelector('#header') as HTMLElement
-  if (!headerEl)
-    return
-
-  if (document.documentElement.scrollTop > 100)
-    headerEl.classList.add('header-bg-blur')
-
-  window.addEventListener('scroll', () => {
-    if (scroll.value < 150) {
-      headerEl.classList.remove('header-hide')
-      return
-    }
-
-    if (scroll.value - oldScroll.value > 150) {
-      headerEl.classList.add('header-hide')
-      oldScroll.value = scroll.value
-    }
-
-    if (oldScroll.value - scroll.value > 150) {
-      headerEl.classList.remove('header-hide')
-      oldScroll.value = scroll.value
-    }
-  })
-})
-
 function toggleNavDrawer() {
   const drawer = document.querySelector('.nav-drawer') as HTMLElement
   const mask = document.querySelector('.nav-drawer-mask') as HTMLElement
@@ -76,9 +42,10 @@ function toggleNavDrawer() {
 
 <template>
   <header
-    id="header" :class="{ 'header-bg-blur': scroll > 20 }"
+    id="header"
+    :class="{ 'header-hide': scroll > 50 }"
     view-transition-name="site-header"
-    class="!fixed bg-transparent z-899 w-screen h-20 px-6 flex justify-between items-center relative"
+    class="!fixed bg-main z-899 w-screen h-20 px-6 flex justify-between items-center relative transition-transform duration-300"
   >
     <div class="flex items-center h-full">
       <a href="/" mr-6 aria-label="Header Logo Image">
@@ -123,11 +90,6 @@ function toggleNavDrawer() {
 <style scoped>
 .header-hide {
   transform: translateY(-100%);
-  transition: transform 0.4s ease;
-}
-
-.header-bg-blur {
-  --at-apply: backdrop-blur-sm;
 }
 
 .nav-drawer {
