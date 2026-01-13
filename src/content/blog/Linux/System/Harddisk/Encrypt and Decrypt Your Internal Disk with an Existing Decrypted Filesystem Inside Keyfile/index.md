@@ -7,11 +7,9 @@ lang: en-US
 
 ## Introduction
 
-In the previous article, I demonstrated how to auto-mount an internal disk during system boot-up. In this article, I'll guide you through the process of encrypting your internal disk using LUKS. This method involves decrypting your first disk, locating the keyfile on that disk, and using it to decrypt subsequent disks. Thus, you'll need to decrypt the first disk to decrypt your internal disk. This ensures that the keyfile is stored on your first disk, preventing them from being separated.
+In the previous article, I demonstrated how to auto-mount an internal disk during system boot-up. In this article, I'll guide you through the process of encrypting your internal disk using LUKS.
 
-If you're unfamiliar with fully encrypting your entire disk, refer to this article:
-
->[Complete Guide to Installing Arch Linux with LUKS Encryption and GNOME Desktop Environment ](/posts/en/linux/distribution/archlinux/archlinux-luks-encryption-fully-install-systemd/).
+This method involves decrypting your first disk, locating the keyfile on that disk, and using it to decrypt subsequent disks. Thus, you'll need to decrypt the first disk to decrypt your internal disk. This ensures that the keyfile is stored on your first disk, preventing them from being separated.
 
 In summary, this method uses both a passphrase and a keyfile for disk decryption. The keyfile is stored on your system.
 
