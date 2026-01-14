@@ -1,28 +1,50 @@
 <script lang="ts" setup>
-import { useWindowScroll } from '@vueuse/core'
-import { computed } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
 
 const navLinks = siteConfig.header.navLinks || []
 
-const socialLinks = computed(() => {
-  return siteConfig.socialLinks.filter((link: Record<string, any>) => {
-    if (link.header && typeof link.header === 'boolean') {
-      return link
-    }
-    else if (link.header && typeof link.header === 'string') {
-      link.icon = link.header.includes('i-') ? link.header : link.icon
-      return link
-    }
-    else {
-      return false
-    }
-  })
+const socialLinks = siteConfig.socialLinks.filter((link: Record<string, any>) => {
+  if (link.header && typeof link.header === 'boolean') {
+    return link
+  }
+  else if (link.header && typeof link.header === 'string') {
+    link.icon = link.header.includes('i-') ? link.header : link.icon
+    return link
+  }
+  else {
+    return false
+  }
 })
 
-const { y: scroll } = useWindowScroll()
+let ticking = false
+function handleScroll() {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const header = document.getElementById('header')
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('header-hide')
+        }
+        else {
+          header.classList.remove('header-hide')
+        }
+      }
+      ticking = false
+    })
+    ticking = true
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 function toggleNavDrawer() {
   const drawer = document.querySelector('.nav-drawer') as HTMLElement
@@ -43,7 +65,6 @@ function toggleNavDrawer() {
 <template>
   <header
     id="header"
-    :class="{ 'header-hide': scroll > 50 }"
     view-transition-name="site-header"
     class="!fixed bg-main z-899 w-screen h-20 px-6 flex justify-between items-center relative transition-transform duration-300"
   >

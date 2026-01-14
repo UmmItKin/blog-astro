@@ -258,6 +258,7 @@ import siteConfig from '@/site-config'
       display: flex;
       width: fit-content;
       gap: 2rem;
+      will-change: transform;
     }
 
     .marquee-row > div {
@@ -300,8 +301,28 @@ import siteConfig from '@/site-config'
       position: relative;
       overflow: hidden;
       padding: 0.5rem 0;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+      /* Use opacity gradient instead of mask for better Firefox performance */
+    }
+
+    .marquee-container::before,
+    .marquee-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 5%;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .marquee-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--c-bg) 0%, transparent 100%);
+    }
+
+    .marquee-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--c-bg) 0%, transparent 100%);
     }
   </style>
 </BaseLayout>
