@@ -1,14 +1,29 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import ListPosts from '@/components/ListPosts.astro'
+import siteConfig from '@/site-config'
 import { getPosts } from '@/utils/posts'
 
 const posts = await getPosts(undefined, 'ctf')
+
+function activeLink(pathname: string) {
+  return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
+}
 ---
 
 <BaseLayout title="CTF Writeups" description="List of all CTF writeups.">
-  <div class="mb-8">
-    <a aria-label="CTF" class="nav-link text-3xl font-bold opacity-80" href="/ctf"> CTF Writeups </a>
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-8">
+    {
+      siteConfig.page.blogLinks.map((nav) => (
+        <a
+          aria-label={nav.text}
+          class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}
+          href={nav.href}
+        >
+          {nav.text}
+        </a>
+      ))
+    }
   </div>
   <ListPosts list={posts} />
 </BaseLayout>

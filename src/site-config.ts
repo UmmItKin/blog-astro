@@ -39,14 +39,6 @@ export const siteConfig = {
         href: '/blog',
       },
       {
-        text: 'CTF',
-        href: '/ctf',
-      },
-      {
-        text: 'Talks',
-        href: '/talks',
-      },
-      {
         text: 'Projects',
         href: '/projects',
       },
@@ -70,8 +62,10 @@ export const siteConfig = {
         text: 'Blog',
         href: '/blog',
       },
-    ],
-    talksLinks: [
+      {
+        text: 'CTF',
+        href: '/ctf',
+      },
       {
         text: 'Talks',
         href: '/talks',
