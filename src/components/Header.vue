@@ -48,8 +48,8 @@ function toggleNavDrawer() {
     class="!fixed bg-main z-899 w-screen h-20 px-6 flex justify-between items-center relative transition-transform duration-300"
   >
     <div class="flex items-center h-full">
-      <a href="/" mr-6 aria-label="Header Logo Image">
-        <img width="32" height="32" :src="siteConfig.header.logo.src" :alt="siteConfig.header.logo.alt">
+      <a href="/" mr-6 aria-label="Header Logo Image" class="font-bold text-xl">
+        UmmIt
       </a>
       <nav class="sm:flex hidden flex-wrap gap-x-6 position-initial flex-row">
         <a
