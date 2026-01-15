@@ -1,8 +1,8 @@
 ---
 title: "Full Disk Encryption with GRUB and Including /boot: Step-by-Step Guide"
 date: 2023-12-21T11:42:02+0800
-lastmod: 2023-12-22T12:28:23+0800
-tag: "LUKS, Linux, Arch linux"
+lastmod: 2026-01-15T09:19:20+0800
+tag: "LUKS, Linux, Arch linux, FDE"
 lang: en-US
 ---
 
@@ -12,7 +12,11 @@ lang: en-US
 
 **2026-01-13 12:00:00**
 
-Today, I updated my Arch installation with a fresh install, but I encountered an issue where it gets stuck at loading `/dev/mapper/vol-root`. I did some research and asked my friends who use full disk encryption about it. During that time, I learned that Arch recently updated something very important for FDE users. Here is the latest version of how to install with FDE on Arch.
+Today, I updated my Arch installation with a fresh install, but I encountered an issue where it gets stuck at loading `/dev/mapper/vol-root`. I did some research and asked my friends who use full disk encryption about it.
+
+During that time, I learned that Arch recently updated something very important for FDE users. Here is the latest version of how to install with FDE on Arch.
+
+For the lastest reference link please see:
 
 https://wiki.archlinux.org/title/Dm-crypt/System_configuration#rd.luks.name
 
