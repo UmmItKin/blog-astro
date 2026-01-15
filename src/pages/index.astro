@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
+
+const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 ---
 
-<BaseLayout description={siteConfig.description}>
+<BaseLayout description={siteConfig.description} image={ogImage}>
   <article class="prose">
     <h1 class="text-title">Hi, I'm Kin :)</h1>
     <p>
