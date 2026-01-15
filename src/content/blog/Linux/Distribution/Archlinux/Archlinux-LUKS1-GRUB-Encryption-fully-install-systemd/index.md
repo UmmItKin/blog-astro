@@ -1,7 +1,7 @@
 ---
 title: "Full Disk Encryption with GRUB and Including /boot: Step-by-Step Guide"
 date: 2023-12-21T11:42:02+0800
-lastmod: 2026-01-15T09:19:20+0800
+lastmod: 2026-01-15T10:00:00+0800
 tag: "LUKS, Linux, Arch linux, FDE"
 lang: en-US
 ---
@@ -24,12 +24,14 @@ https://wiki.archlinux.org/title/Dm-crypt/System_configuration#rd.luks.name
 
 Since systemd-boot doesn't support encrypted `/boot`, grub does. There are not so good points though, like only luks1 and argon2id are not supported. However, in this short guide I will teach you how to encrypt your /boot to be fully encrypted with our disk.
 
+>Warning: GRUB's support for LUKS2 is still limited. You skill need to use LUKS2 with PBKDF2. inorder it boot are working.
+
 ### Step 1: Encrypt the Disk
 
 To begin, encrypt your disk using the LUKS format, so avoid using certain options:
 
 ```shell
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha256 --iter-time 5000 --key-size 256 --use-urandom --verify-passphrase /dev/nvme0n1p2
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha256 --pbkdf pbkdf2 --iter-time 5000 --key-size 256 --use-urandom --verify-passphrase /dev/nvme0n1p2
 ```
 
 Ensure you answer `YES` when prompted. GRUB doesn't support the `--pbkdf argon2id` option, so it's crucial to stick to LUKS1 for compatibility.
@@ -105,7 +107,15 @@ Edit the `/etc/mkinitcpio.conf` file, ensuring that the `HOOKS` line includes `l
 HOOKS=(systemd autodetect microcode modconf kms keyboard keymap sd-vconsole sd-encrypt block lvm2 filesystems fsck)
 ```
 
-Save the changes and regenerate the configuration:
+Save the changes. Now add a file because this causes the error:
+
+`==> ERROR: file not found: '/etc/vconsole.conf'`
+
+```shell
+echo "KEYMAP=us" > /etc/vconsole.conf
+```
+
+And now regenerate the configuration:
 
 ```shell
 mkinitcpio -P
