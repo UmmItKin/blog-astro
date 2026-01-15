@@ -31,7 +31,7 @@ Since systemd-boot doesn't support encrypted `/boot`, grub does. There are not s
 To begin, encrypt your disk using the LUKS format, so avoid using certain options:
 
 ```shell
-cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha256 --pbkdf pbkdf2 --iter-time 5000 --key-size 256 --use-urandom --verify-passphrase /dev/nvme0n1p2
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha512 --pbkdf pbkdf2 --iter-time 5000 --key-size 512 --use-urandom --verify-passphrase /dev/nvme0n1p2
 ```
 
 Ensure you answer `YES` when prompted. GRUB doesn't support the `--pbkdf argon2id` option, so it's crucial to stick to LUKS1 for compatibility.
@@ -78,6 +78,7 @@ mount /dev/vol/home /mnt/home
 Since GRUB supports EFI systems, mount the EFI system partition:
 
 ```shell
+mkfs.fat -F32 /dev/nvme0n1p1
 mount /dev/nvme0n1p1 --mkdir /mnt/boot/efi
 ```
 
