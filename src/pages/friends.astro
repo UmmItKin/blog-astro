@@ -1,86 +1,98 @@
 ---
+import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+
+import lemonteaImg from '@/assets/friends/lemontea.png'
+import chilinImg from '@/assets/friends/chilin.png'
+import frankImg from '@/assets/friends/frank.png'
+import elliotImg from '@/assets/friends/elliot.png'
+import yochanImg from '@/assets/friends/yochan.png'
+import kohiroImg from '@/assets/friends/kohiro.png'
+import robinImg from '@/assets/friends/robin.png'
+import auronImg from '@/assets/friends/auron.webp'
+import syuanImg from '@/assets/friends/syuan.png'
+import shirakamiNekoImg from '@/assets/friends/shirakami-neko.png'
+import wolfYuanImg from '@/assets/friends/wolf-yuan.png'
 
 const ogImage = { src: '/og/friends.png', alt: 'Friends' }
 
 const friendsList = [
   {
-    image: 'https://avatars.githubusercontent.com/u/101975746?v=4',
+    image: lemonteaImg,
     name: 'LemonTea',
     url: 'https://blog-lemontea.pages.dev/',
     github: 'https://github.com/LemonTeatw1',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/107759974?v=4',
+    image: chilinImg,
     name: 'ChiLin.H',
     url: 'https://neko70.net/',
     github: 'https://github.com/qilin102223',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/135571477?v=4',
+    image: frankImg,
     name: 'Frank',
     url: 'https://frk.tw/',
     github: 'https://github.com/Frank-Kam',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/115418645?v=4',
+    image: elliotImg,
     name: 'Elliot',
     url: 'https://elliot-tw.me/',
     github: 'https://github.com/Elliot-32',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/132590659?v=4',
+    image: yochanImg,
     name: 'Yochan',
     url: 'https://yochan06.github.io/',
     github: 'https://github.com/yochan06',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/161041270?v=4',
+    image: kohiroImg,
     name: 'Kohiro',
     url: 'https://github.com/kohiro961021',
     github: 'https://github.com/kohiro961021',
     tooltip: '',
   },
   {
-    image: 'https://avatars.githubusercontent.com/u/150093538?v=4',
+    image: robinImg,
     name: 'Robin',
     url: 'https://robin-tw.me/',
     github: 'https://github.com/cxk228922',
     tooltip: '',
   },
   {
-    image: 'https://4ur0n.github.io/avatar/avatar.webp',
+    image: auronImg,
     name: 'Auron',
     url: 'https://4ur0n.github.io/',
     github: 'https://github.com/4ur0n',
     tooltip: '老婆 ❤️',
   },
-
   {
-    image: 'https://avatars.githubusercontent.com/u/171336104?v=4',
+    image: syuanImg,
     name: 'Syuan',
     url: 'https://5yu4n.github.io/',
     github: 'https://github.com/5yu4n',
     tooltip: '老公 ❤️',
   },
-
   {
-    image: 'https://avatars.githubusercontent.com/u/135110268?v=4',
+    image: shirakamiNekoImg,
     name: '白上ねこ',
     url: 'https://moe.lolicon.wtf/',
     github: 'https://github.com/shirakamiNeko',
+    tooltip: '',
   },
-
   {
-    image: 'https://avatars.githubusercontent.com/u/58245644?v=4',
+    image: wolfYuanImg,
     name: 'Wolf Yuan',
     url: 'https://wolf-yuan.dev/',
     github: 'https://github.com/wolf-yuan-6115',
+    tooltip: '',
   },
 ]
 ---
@@ -100,9 +112,11 @@ const friendsList = [
                 {friend.tooltip}
               </span>
             )}
-            <img
+            <Image
               src={friend.image}
               alt={`${friend.name}'s avatar`}
+              width={112}
+              height={112}
               class="w-28 h-28 rd-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-200"
             />
           </a>
